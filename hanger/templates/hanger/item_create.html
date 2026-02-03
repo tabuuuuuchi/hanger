@@ -1,7 +1,7 @@
 {% extends 'header_and_back.html' %}
 {% load static %}
 
-{% block title_child %}アイテム詳細{% endblock %}
+{% block title_child %}アイテム登録{% endblock %}
 
 {% block nav %}
 <div class="humburger-box">
@@ -15,10 +15,10 @@
 {% block page-title %}
 <div class="detail-create-title-bar-items">
     <!--戻るボタン-->
-    <div class="return-search-box">
+    <a class="return-search-box" href="{% url 'list-item' %}">
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
-    </div>
-    <h2 class="page-title">アイテム詳細</h2>
+    </a>
+    <h2 class="page-title">アイテム登録</h2>
 </div>
 {% endblock %}
 
@@ -26,5 +26,31 @@
 <!--ハンガーイラスト-->
 <span class="detail-create-hanger"></span>
 <div class="item-detail-content">
+    <div class="item-detail-items background-grey">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-items">
+                <h3>アイテム名</h3>
+                <input name="name" class="border-dark background-light">
+            </div>
+            <div class="form-items">
+                <h3>ブランド名</h3>
+                <input name="brand" class="border-dark background-light">
+            </div>
+            <div class="form-items">
+                <h3>カテゴリーを選択</h3>
+                <select name="category" class="border-dark background-light">
+                    {% for category in form.category %}
+                        {{ category }}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-items">
+                <h3>画像を選択</h3>
+                <input type="file" name="thumbnail" id="form-file">
+            </div>
+            <button type="submit" class="form-button background-dark color-light">登録する</button>
+        </form>
+    </div>
 </div>
 {% endblock %}

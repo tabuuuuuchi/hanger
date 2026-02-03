@@ -25,6 +25,9 @@ body {
 .background-light {
     background-color: #f3f3f3;
 }
+.background-grey {
+    background-color: #D7D7D7;
+}
 .background-spring {
     background-color: #ffcef5;
 }
@@ -600,4 +603,47 @@ footer {
     color: #303030;
     text-align: right;
     margin: 0 5vw 0 0;
+}
+
+/* アイテム登録画面
+----------------------------*/
+.form-items {
+    width: 90%;
+    margin: 0 auto 20px;
+    display: flex;
+    flex-direction: column;
+    left: 0%;
+    text-align: left;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    h3 {
+        font-size: 16px;
+        font-weight: 500;
+    }
+    input {
+        height: 24px;
+        padding: 2px 5px;
+        border-radius: 10px;
+        border-width: 1px;
+    }
+    select {
+        width: 100px;
+        border-width: 1px;
+        border-radius: 2px;
+    }
+}
+
+#form-file {
+    padding: 0;
+    border-radius: 0;
+    height: 30px;
+}
+
+.form-button {
+    width: 100px;
+    height: 30px;
+    border-style: none;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
+    font-weight: 500;
 }

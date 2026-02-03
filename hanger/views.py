@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Item, Season, Outfit
 
@@ -17,6 +18,12 @@ class DetailItemView(DetailView):       #アイテム詳細
 class CreateItemView(CreateView):
     template_name = 'hanger/item_create.html'
     model = Item
+    fields = ('name', 'brand', 'category', 'thumbnail')
+    success_url = reverse_lazy('list-item')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class ListOutfitView(ListView):     #コーデ一覧
