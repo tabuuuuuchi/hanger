@@ -15,9 +15,9 @@
 {% block page-title %}
 <div class="detail-create-title-bar-items">
     <!--戻るボタン-->
-    <div class="return-search-box">
+    <a class="return-search-box" href="{% url 'list-outfit' %}">
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
-    </div>
+    </a>
     <h2 class="page-title">コーデ詳細</h2>
 </div>
 {% endblock %}
@@ -35,12 +35,12 @@
             <h3 class="outfit-item-title color-dark">アイテム一覧</h3>
             <div class="outfit-item-items">
                 {% for item in object.items.all %}
-                    <div class="item-box background-dark">
+                    <a class="item-box background-dark" href="{% url 'detail-item' item.pk %}?next={{ request.path }}">
                         <div class="item-elements">
                             <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
                             <p class="item-name color-light">{{ item.name }}</p>
                         </div>
-                    </div>
+                    </a>
                 {% endfor %}
             </div>
         </div>
