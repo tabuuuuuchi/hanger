@@ -15,7 +15,7 @@
 {% block page-title %}
 <div class="detail-create-title-bar-items">
     <!--戻るボタン-->
-    <a class="return-search-box" href="{{ request.GET.next }}">
+    <a class="return-search-box" href="{% url 'list-item' %}">
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
     </a>
     <h2 class="page-title">アイテム詳細</h2>
@@ -38,9 +38,9 @@
             </div>
         </div>
         <div class="item-detail-button-items">
-            <div class="item-detail-button-box background-dark border-light">
+            <a class="item-detail-button-box background-dark border-light" href="{% url 'update-item' object.pk %}">
                 <h3 class="item-detail-button-title color-light">編集</h2>
-            </div>
+            </a>
             <a class="item-detail-button-box background-dark border-light" href="{% url 'delete-item' object.pk %}">
                 <h3 class="item-detail-button-title color-light">削除</h2>
             </a>
