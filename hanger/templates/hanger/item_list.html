@@ -35,7 +35,7 @@
         <div class="list-items">
             {% for item in object_list %}
                 {% if item.category == "トップス" %}
-                    <a class="item-box background-dark" href="{% url 'detail-item' item.pk %}?next={{ request.path }}">
+                    <a class="item-box background-dark" href="{% url 'detail-item' item.pk %}">
                         <div class="item-elements">
                             <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
                             <p class="item-name color-light">{{ item.name }}</p>
