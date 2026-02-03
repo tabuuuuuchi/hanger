@@ -58,12 +58,12 @@
                     {% for outfit in object_list %}
                         {% for outfit_season in outfit.seasons.all %}
                             {% if outfit_season == ssn %}
-                                <div class="item-box background-light">
+                                <a class="item-box background-light" href="{% url 'detail-outfit' outfit.pk %}">
                                     <div class="item-elements">
                                         <img class="item-img img-border-dark" src="{{ outfit.thumbnail.url }}">
                                         <p class="item-name color-dark">{{ outfit.name }}</p>
                                     </div>
-                                </div>
+                                </a>
                             {% endif %}
                         {% endfor %}
                     {% endfor %}

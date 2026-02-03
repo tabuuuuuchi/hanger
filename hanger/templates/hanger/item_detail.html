@@ -15,9 +15,9 @@
 {% block page-title %}
 <div class="detail-create-title-bar-items">
     <!--戻るボタン-->
-    <div class="return-search-box">
+    <a class="return-search-box" href="{{ request.GET.next }}">
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
-    </div>
+    </a>
     <h2 class="page-title">アイテム詳細</h2>
 </div>
 {% endblock %}

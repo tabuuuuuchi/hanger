@@ -28,6 +28,7 @@ class ListOutfitView(ListView):     #コーデ一覧
         ctx["season"] = Season.objects.all()
         return ctx
 
+
 class DetailOutfitView(DetailView):    #コーデ詳細
     templates_name = 'hanger/outfit_detail.html'
     model = Outfit

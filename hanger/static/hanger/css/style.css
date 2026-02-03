@@ -275,6 +275,7 @@ header {
 .item-box {
     width: 100%;
     aspect-ratio: 13/17;
+    text-decoration: none;
 }
 
 .item-elements {
