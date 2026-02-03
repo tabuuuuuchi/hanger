@@ -1,0 +1,131 @@
+{% extends 'header_and_back.html' %}
+{% load static %}
+
+{% block title_child %}アイテム一覧{% endblock %}
+
+{% block nav %}
+<div class="humburger-box">
+    <span class="humburger-line-top"></span>
+    <span class="humburger-line-middle"></span>
+    <span class="humburger-line-bottom"></span>
+</div>
+{% endblock %}
+
+
+{% block page-title %}
+<div class="list-title-bar-items">
+    <h2 class="page-title">アイテム一覧</h2>
+    <!--検索ボタン-->
+    <div class="return-search-box">
+        <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content_child %}
+<span class="list-hanger"></span>
+<span class="addition-button background-light border-dark">
+    <span class="addition-button-line-vertical background-dark"></span>
+    <span class="addition-button-line-horizontal background-dark"></span>
+</span>
+<div class="list-content">
+    <div class="list-category">
+        <h3 class="list-title color-dark">トップス</h3>
+        <div class="list-items">
+            {% for item in object_list %}
+                {% if item.category == "トップス" %}
+                    <div class="item-box background-dark">
+                        <div class="item-elements">
+                            <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
+                            <p class="item-name color-light">{{ item.name }}</p>
+                            <p class="item-brand color-light">{{ item.brand }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="list-category">
+        <h3 class="list-title color-dark">パンツ</h3>
+        <div class="list-items">
+            {% for item in object_list %}
+                {% if item.category == "パンツ" %}
+                    <div class="item-box background-dark">
+                        <div class="item-elements">
+                            <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
+                            <p class="item-name color-light">{{ item.name }}</p>
+                            <p class="item-brand color-light">{{ item.brand }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="list-category">
+        <h3 class="list-title color-dark">アウター</h3>
+        <div class="list-items">
+            {% for item in object_list %}
+                {% if item.category == "アウター" %}
+                    <div class="item-box background-dark">
+                        <div class="item-elements">
+                            <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
+                            <p class="item-name color-light">{{ item.name }}</p>
+                            <p class="item-brand color-light">{{ item.brand }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="list-category">
+        <h3 class="list-title color-dark">シューズ</h3>
+        <div class="list-items">
+            {% for item in object_list %}
+                {% if item.category == "シューズ" %}
+                    <div class="item-box background-dark">
+                        <div class="item-elements">
+                            <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
+                            <p class="item-name color-light">{{ item.name }}</p>
+                            <p class="item-brand color-light">{{ item.brand }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="list-category">
+        <h3 class="list-title color-dark">アクセサリー</h3>
+        <div class="list-items">
+            {% for item in object_list %}
+                {% if item.category == "アクセサリー" %}
+                    <div class="item-box background-dark">
+                        <div class="item-elements">
+                            <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
+                            <p class="item-name color-light">{{ item.name }}</p>
+                            <p class="item-brand color-light">{{ item.brand }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="list-category">
+        <h3 class="list-title color-dark">その他</h3>
+        <div class="list-items">
+            {% for item in object_list %}
+                {% if item.category == "その他" %}
+                    <div class="item-box background-dark">
+                        <div class="item-elements">
+                            <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
+                            <p class="item-name color-light">{{ item.name }}</p>
+                            <p class="item-brand color-light">{{ item.brand }}</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

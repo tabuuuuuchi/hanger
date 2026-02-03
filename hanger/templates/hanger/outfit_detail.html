@@ -1,0 +1,81 @@
+{% extends 'header_and_back.html' %}
+{% load static %}
+
+{% block title_child %}アイテム詳細{% endblock %}
+
+{% block nav %}
+<div class="humburger-box">
+    <span class="humburger-line-top"></span>
+    <span class="humburger-line-middle"></span>
+    <span class="humburger-line-bottom"></span>
+</div>
+{% endblock %}
+
+
+{% block page-title %}
+<div class="detail-create-title-bar-items">
+    <!--戻るボタン-->
+    <div class="return-search-box">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </div>
+    <h2 class="page-title">コーデ詳細</h2>
+</div>
+{% endblock %}
+
+{% block content_child %}
+<!--ハンガーイラスト-->
+<span class="detail-create-hanger"></span>
+<div class="item-detail-content">
+    <div class="outfit-detail-items background-light border-dark">
+        <div class="img-box">
+            <img class="item-detail-img border-dark" src="{{ object.thumbnail.url }}">
+        </div>
+        <h1 class="item-detail-title color-dark">{{ object.name }}</h1>
+        <div class="outfit-item-content">
+            <h3 class="outfit-item-title color-dark">アイテム一覧</h3>
+            <div class="outfit-item-items">
+                {% for item in object.items.all %}
+                    <div class="item-box background-dark">
+                        <div class="item-elements">
+                            <img class="item-img img-border-light" src="{{ item.thumbnail.url }}">
+                            <p class="item-name color-light">{{ item.name }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="outfit-item-content">
+            <h3 class="outfit-item-title color-dark">季節</h3>
+            <div class="outfit-season-items">
+                {% for season in object.seasons.all %}
+                    {% if season|stringformat:"s" == 'Spring' %}
+                        <div class="detail-season-title-box background-spring border-dark">
+                            <h2 class="detail-season-name color-dark">{{ season }}</h2>
+                        </div>
+                    {% elif season|stringformat:"s" == "Summer" %}
+                        <div class="detail-season-title-box background-summer border-dark">
+                            <h2 class="detail-season-name color-dark">{{ season }}</h2>
+                        </div>
+                    {% elif season|stringformat:"s" == "Autumn" %}
+                        <div class="detail-season-title-box background-autumn border-dark">
+                            <h2 class="detail-season-name color-dark">{{ season }}</h2>
+                        </div>
+                    {% elif season|stringformat:"s" == "Winter" %}
+                        <div class="detail-season-title-box background-winter border-dark">
+                            <h2 class="detail-season-name color-dark">{{ season }}</h2>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="item-detail-button-items">
+            <div class="item-detail-button-box background-light border-dark">
+                <h3 class="item-detail-button-title color-dark">編集</h2>
+            </div>
+            <div class="item-detail-button-box background-light border-dark">
+                <h3 class="item-detail-button-title color-dark">削除</h2>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

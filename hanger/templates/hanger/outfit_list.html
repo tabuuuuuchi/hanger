@@ -1,0 +1,77 @@
+{% extends 'header_and_back.html' %}
+{% load static %}
+
+{% block title_child %}アイテム一覧{% endblock %}
+
+{% block nav %}
+<div class="humburger-box">
+    <span class="humburger-line-top"></span>
+    <span class="humburger-line-middle"></span>
+    <span class="humburger-line-bottom"></span>
+</div>
+{% endblock %}
+
+
+{% block page-title %}
+<div class="list-title-bar-items">
+    <h2 class="page-title">コーデ一覧</h2>
+    <!--検索ボタン-->
+    <div class="return-search-box">
+        <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+    </div>
+</div>
+{% endblock %}
+
+
+{% block content_child %}
+<span class="list-hanger"></span>
+<span class="addition-button background-dark border-light">
+    <span class="addition-button-line-vertical background-light"></span>
+    <span class="addition-button-line-horizontal background-light"></span>
+</span>
+<div class="outfit-list-content">
+    <div class="outfit-top-box background-dark border-light"></div>
+    <div class="outfit-box">
+        <div class="outfit-box-left background-dark border-light"></div>
+        <div class="outfit-box-center background-dark">
+            {% for ssn in season %}
+                <div class="season-title-content background-dark img-border-light">
+                    {% if ssn|stringformat:"s" == 'Spring' %}
+                        <div class="season-title-box background-spring">
+                            <h2 class="season-name color-dark">{{ ssn }}</h2>
+                        </div>
+                    {% elif ssn|stringformat:"s" == "Summer" %}
+                        <div class="season-title-box background-summer">
+                            <h2 class="season-name color-dark">{{ ssn }}</h2>
+                        </div>
+                    {% elif ssn|stringformat:"s" == "Autumn" %}
+                        <div class="season-title-box background-autumn">
+                            <h2 class="season-name color-dark">{{ ssn }}</h2>
+                        </div>
+                    {% elif ssn|stringformat:"s" == "Winter" %}
+                        <div class="season-title-box background-winter">
+                            <h2 class="season-name color-dark">{{ ssn }}</h2>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="outfit-list-items background-dark border-light">
+                    {% for outfit in object_list %}
+                        {% for outfit_season in outfit.seasons.all %}
+                            {% if outfit_season == ssn %}
+                                <div class="item-box background-light">
+                                    <div class="item-elements">
+                                        <img class="item-img img-border-dark" src="{{ outfit.thumbnail.url }}">
+                                        <p class="item-name color-dark">{{ outfit.name }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <div class="outfit-box-bottom border-light"></div>
+            {% endfor %}
+        </div>
+        <div class="outfit-box-right background-dark border-light"></div>
+    </div>
+</div>
+{% endblock %}

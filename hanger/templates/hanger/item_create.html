@@ -1,0 +1,30 @@
+{% extends 'header_and_back.html' %}
+{% load static %}
+
+{% block title_child %}アイテム詳細{% endblock %}
+
+{% block nav %}
+<div class="humburger-box">
+    <span class="humburger-line-top"></span>
+    <span class="humburger-line-middle"></span>
+    <span class="humburger-line-bottom"></span>
+</div>
+{% endblock %}
+
+
+{% block page-title %}
+<div class="detail-create-title-bar-items">
+    <!--戻るボタン-->
+    <div class="return-search-box">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </div>
+    <h2 class="page-title">アイテム詳細</h2>
+</div>
+{% endblock %}
+
+{% block content_child %}
+<!--ハンガーイラスト-->
+<span class="detail-create-hanger"></span>
+<div class="item-detail-content">
+</div>
+{% endblock %}
