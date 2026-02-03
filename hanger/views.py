@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import Item, Season, Outfit
 
 
@@ -24,6 +24,12 @@ class CreateItemView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class DeleteItemView(DeleteView):       #アイテム詳細
+    template_name = 'hanger/item_delete.html'
+    model = Item
+    success_url = reverse_lazy('list-item')
 
 
 class ListOutfitView(ListView):     #コーデ一覧

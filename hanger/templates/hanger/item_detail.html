@@ -41,9 +41,9 @@
             <div class="item-detail-button-box background-dark border-light">
                 <h3 class="item-detail-button-title color-light">編集</h2>
             </div>
-            <div class="item-detail-button-box background-dark border-light">
+            <a class="item-detail-button-box background-dark border-light" href="{% url 'delete-item' object.pk %}">
                 <h3 class="item-detail-button-title color-light">削除</h2>
-            </div>
+            </a>
         </div>
     </div>
 </div>
