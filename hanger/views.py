@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse ,reverse_lazy
+from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Item, Season, Outfit
-from django.http import HttpResponseRedirect
+from .forms import OutfitForm
 
 
 
@@ -67,7 +68,7 @@ def index_view(request):    #ログイン/会員登録画面
     return render(request, 'hanger/index.html')
 
 
-class DetailOutfitItemView(DetailView):       #アイテム詳細
+class DetailOutfitItemView(DetailView):       #コーデ→アイテム詳細
     template_name = 'hanger/item_detail.html'
     model = Item
 
@@ -84,7 +85,7 @@ class DetailOutfitItemView(DetailView):       #アイテム詳細
         return context
     
 
-class UpdateOutfitItemView(UpdateView):       #アイテム詳細
+class UpdateOutfitItemView(UpdateView):       #コーデ→アイテム編集
     template_name = 'hanger/item_update.html'
     model = Item
     fields = ('name', 'brand', 'category', 'thumbnail')
@@ -111,7 +112,7 @@ class UpdateOutfitItemView(UpdateView):       #アイテム詳細
 
     
 
-class DeleteOutfitItemView(DeleteView):       #アイテム詳細
+class DeleteOutfitItemView(DeleteView):       #コーデ→アイテム削除
     template_name = 'hanger/item_delete.html'
     model = Item
     def get_success_url(self):
@@ -132,3 +133,19 @@ class DeleteOutfitItemView(DeleteView):       #アイテム詳細
         outfit_object.items.remove(self.object.id)
             
         return HttpResponseRedirect(self.get_success_url())
+    
+
+class CreateOutfitView(CreateView):    #コーデ登録
+    template_name = 'hanger/outfit_create.html'
+    model = Item
+    form_class = OutfitForm
+    success_url = reverse_lazy('list-outfit')
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx["item"] = Item.objects.all()
+        return ctx
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

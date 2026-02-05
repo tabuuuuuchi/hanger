@@ -81,6 +81,11 @@ body {
     border-color: #f3f3f3;
 }
 
+/*線のふとさ*/
+.bw-1 {
+    border-width: 1px;
+}
+
 
 /*ヘッダー
 ---------------------------------*/
@@ -629,6 +634,11 @@ footer {
     font-family: "Zen Kaku Gothic New", sans-serif;
     h3 {
         font-size: 16px;
+        font-weight: 700;
+        padding-bottom: 8px;
+    }
+    h4 {
+        font-size: 14px;
         font-weight: 500;
     }
     input {
@@ -673,4 +683,54 @@ footer {
     font-family: "Zen Kaku Gothic New", sans-serif;
     font-weight: 700;
     font-size: 18px;
+}
+
+
+
+/*チェックボックス関連
+----------------------------------*/
+.checkbox-season-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
+    margin: 0 auto;
+    gap: 8px;
+}
+
+.checkbox-items {
+    width: 100%;
+    display: flex;
+    gap: 2px;
+    padding-bottom: 8px;
+}
+
+.create-season-title-box {
+    width: 72px;
+    height: 25px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-season-name {
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    font-family: "Noto Sans", sans-serif;
+    font-weight: 700;
+}
+
+.checkbox-item-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 90%;
+    margin: 0 auto;
+    gap: 5px;
+}
+
+.checkbox-item-name {
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
 }
