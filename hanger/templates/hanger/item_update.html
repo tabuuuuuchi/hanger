@@ -15,9 +15,15 @@
 {% block page-title %}
 <div class="detail-create-title-bar-items">
     <!--戻るボタン-->
+    {% if outfit %}
+    <a class="return-search-box" href="{% url 'detail-outfit-item' outfit_id=outfit.pk pk=object.pk %}">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </a>
+    {% else %}
     <a class="return-search-box" href="{% url 'detail-item' object.pk %}">
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
     </a>
+    {% endif %}
     <h2 class="page-title">アイテム編集</h2>
 </div>
 {% endblock %}

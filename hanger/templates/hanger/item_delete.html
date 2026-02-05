@@ -15,9 +15,15 @@
 {% block page-title %}
 <div class="detail-create-title-bar-items">
     <!--戻るボタン-->
+    {% if outfit %}
+    <a class="return-search-box" href="{% url 'detail-outfit' outfit.pk %}">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </a>
+    {% else %}
     <a class="return-search-box" href="{% url 'detail-item' object.pk %}">
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
     </a>
+    {% endif %}
     <h2 class="page-title">アイテム削除</h2>
 </div>
 {% endblock %}
@@ -29,9 +35,15 @@
     <div class="item-detail-items background-dark">
         <h4 class="delete-title color-light">"{{ object.name }}"を本当に削除しますか？</h2>
         <div class="item-detail-button-items">
+            {% if outfit %}
+            <a class="item-detail-button-box background-dark border-light" href="{% url 'detail-outfit' outfit.pk %}">
+                <h3 class="item-detail-button-title color-light">いいえ</h2>
+            </a>
+            {% else %}
             <a class="item-detail-button-box background-dark border-light" href="{% url 'detail-item' object.pk %}">
                 <h3 class="item-detail-button-title color-light">いいえ</h2>
             </a>
+            {% endif %}
             <form method="post" class="background-red item-detail-button-box border-light">
                 {% csrf_token %}
                 <button type="submit" class="item-detail-button-title color-light">はい</h2>
