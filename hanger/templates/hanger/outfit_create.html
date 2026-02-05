@@ -1,0 +1,184 @@
+{% extends 'header_and_back.html' %}
+{% load static %}
+
+{% block title_child %}アイテム登録{% endblock %}
+
+{% block nav %}
+<div class="humburger-box">
+    <span class="humburger-line-top"></span>
+    <span class="humburger-line-middle"></span>
+    <span class="humburger-line-bottom"></span>
+</div>
+{% endblock %}
+
+
+{% block page-title %}
+<div class="detail-create-title-bar-items">
+    <!--戻るボタン-->
+    <a class="return-search-box" href="{% url 'list-outfit' %}">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </a>
+    <h2 class="page-title">コーデ登録</h2>
+</div>
+{% endblock %}
+
+{% block content_child %}
+<!--ハンガーイラスト-->
+<span class="detail-create-hanger"></span>
+<div class="item-detail-content">
+    <div class="item-detail-items background-grey">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-items">
+                <h3>コーデ名</h3>
+                <input name="name" class="border-dark background-light">
+            </div>
+            <div class="form-items">
+                <h3>画像を選択</h3>
+                <input type="file" name="thumbnail" id="form-file">
+            </div>
+            <div class="form-items">
+                <h3>季節を選択</h3>
+                <div class="checkbox-season-content">
+                    {% for checkbox in form.seasons %}
+                    <div class="checkbox-items">
+                        {{ checkbox.tag }}
+                        {% if checkbox.choice_label == 'Spring' %}
+                        <div class="background-spring create-season-title-box border-dark bw-1">
+                            <label for="{{ checkbox.id_for_label }}" class="create-season-name color-dark">
+                                {{ checkbox.choice_label }}
+                            </label>
+                        </div>
+                        {% elif checkbox.choice_label == 'Summer' %}
+                        <div class="background-summer create-season-title-box border-dark bw-1">
+                            <label for="{{ checkbox.id_for_label }}" class="create-season-name color-dark">
+                                {{ checkbox.choice_label }}
+                            </label>
+                        </div>
+                        {% elif checkbox.choice_label == 'Autumn' %}
+                        <div class="background-autumn create-season-title-box border-dark bw-1">
+                            <label for="{{ checkbox.id_for_label }}" class="create-season-name color-dark">
+                                {{ checkbox.choice_label }}
+                            </label>
+                        </div>
+                        {% elif checkbox.choice_label == 'Winter' %}
+                        <div class="background-winter create-season-title-box border-dark bw-1">
+                            <label for="{{ checkbox.id_for_label }}" class="create-season-name color-dark">
+                                {{ checkbox.choice_label }}
+                            </label>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="form-items">
+                <h3>アイテムを選択</h3>
+                <h4>トップス</h4>
+                <div class="checkbox-item-content">
+                    {% for checkbox in form.items %}
+                        {% for im in item %}
+                            {% if checkbox.choice_label == im.name %}
+                                {% if im.category == 'トップス' %}
+                                    <div class="checkbox-items">
+                                        {{ checkbox.tag }}
+                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                            {{ checkbox.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <h4>パンツ</h4>
+                <div class="checkbox-item-content">
+                    {% for checkbox in form.items %}
+                        {% for im in item %}
+                            {% if checkbox.choice_label == im.name %}
+                                {% if im.category == 'パンツ' %}
+                                    <div class="checkbox-items">
+                                        {{ checkbox.tag }}
+                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                            {{ checkbox.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <h4>アウター</h4>
+                <div class="checkbox-item-content">
+                    {% for checkbox in form.items %}
+                        {% for im in item %}
+                            {% if checkbox.choice_label == im.name %}
+                                {% if im.category == 'アウター' %}
+                                    <div class="checkbox-items">
+                                        {{ checkbox.tag }}
+                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                            {{ checkbox.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <h4>シューズ</h4>
+                <div class="checkbox-item-content">
+                    {% for checkbox in form.items %}
+                        {% for im in item %}
+                            {% if checkbox.choice_label == im.name %}
+                                {% if im.category == 'シューズ' %}
+                                    <div class="checkbox-items">
+                                        {{ checkbox.tag }}
+                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                            {{ checkbox.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <h4>アクセサリー</h4>
+                <div class="checkbox-item-content">
+                    {% for checkbox in form.items %}
+                        {% for im in item %}
+                            {% if checkbox.choice_label == im.name %}
+                                {% if im.category == 'アクセサリー' %}
+                                    <div class="checkbox-items">
+                                        {{ checkbox.tag }}
+                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                            {{ checkbox.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+                <h4>その他</h4>
+                <div class="checkbox-item-content">
+                    {% for checkbox in form.items %}
+                        {% for im in item %}
+                            {% if checkbox.choice_label == im.name %}
+                                {% if im.category == 'その他' %}
+                                    <div class="checkbox-items">
+                                        {{ checkbox.tag }}
+                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                            {{ checkbox.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <button type="submit" class="form-button background-dark color-light">登録する</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

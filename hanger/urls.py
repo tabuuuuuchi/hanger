@@ -13,4 +13,5 @@ urlpatterns = [
     path('outfit/<int:outfit_id>/<int:pk>/detail/', views.DetailOutfitItemView.as_view(), name='detail-outfit-item'),
     path('outfit/<int:outfit_id>/<int:pk>/update/', views.UpdateOutfitItemView.as_view(), name='update-outfit-item'),
     path('outfit/<int:outfit_id>/<int:pk>/delete/', views.DeleteOutfitItemView.as_view(), name='delete-outfit-item'),
+    path('outfit/create/', views.CreateOutfitView.as_view(), name='create-outfit'),
 ]
