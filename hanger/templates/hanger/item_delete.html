@@ -16,7 +16,7 @@
 <div class="detail-create-title-bar-items">
     <!--戻るボタン-->
     {% if outfit %}
-    <a class="return-search-box" href="{% url 'detail-outfit' outfit.pk %}">
+    <a class="return-search-box" href="{% url 'detail-outfit-item' outfit_id=outfit.pk pk=object.pk %}">
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
     </a>
     {% else %}
@@ -36,7 +36,7 @@
         <h4 class="delete-title color-light">"{{ object.name }}"を本当に削除しますか？</h2>
         <div class="item-detail-button-items">
             {% if outfit %}
-            <a class="item-detail-button-box background-dark border-light" href="{% url 'detail-outfit' outfit.pk %}">
+            <a class="item-detail-button-box background-dark border-light" href="{% url 'detail-outfit-item' outfit_id=outfit.pk pk=object.pk %}">
                 <h3 class="item-detail-button-title color-light">いいえ</h2>
             </a>
             {% else %}
