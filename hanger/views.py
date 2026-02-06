@@ -1,14 +1,16 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse ,reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Item, Season, Outfit
 from .forms import OutfitForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 
 
 
 
-class ListItemView(ListView):          #アイテム一覧
+class ListItemView(LoginRequiredMixin, ListView):          #アイテム一覧
     template_name = 'hanger/item_list.html'
     model = Item
 
@@ -16,19 +18,18 @@ class ListItemView(ListView):          #アイテム一覧
             query = self.request.GET.get('query')
 
             if query:
-                item_list = Item.objects.filter(
-                    name__icontains=query)
+                item_list = Item.objects.filter( Q(user=self.request.user),Q(name__icontains=query)|Q(brand__icontains=query))
             else:
-                item_list = Item.objects.all()
+                item_list = Item.objects.filter(user=self.request.user)
             return item_list
     
 
-class DetailItemView(DetailView):       #アイテム詳細
+class DetailItemView(LoginRequiredMixin, DetailView):       #アイテム詳細
     template_name = 'hanger/item_detail.html'
     model = Item
 
 
-class CreateItemView(CreateView):
+class CreateItemView(LoginRequiredMixin, CreateView):
     template_name = 'hanger/item_create.html'
     model = Item
     fields = ('name', 'brand', 'category', 'thumbnail')
@@ -39,13 +40,13 @@ class CreateItemView(CreateView):
         return super().form_valid(form)
 
 
-class DeleteItemView(DeleteView):       #アイテム詳細
+class DeleteItemView(LoginRequiredMixin, DeleteView):       #アイテム詳細
     template_name = 'hanger/item_delete.html'
     model = Item
     success_url = reverse_lazy('list-item')
 
 
-class UpdateItemView(UpdateView):
+class UpdateItemView(LoginRequiredMixin, UpdateView):
     template_name = 'hanger/item_update.html'
     model = Item
     fields = ('name', 'brand', 'category', 'thumbnail')
@@ -58,7 +59,7 @@ class UpdateItemView(UpdateView):
         return reverse('detail-item', kwargs={'pk': self.object.id})
     
 
-class ListOutfitView(ListView):     #コーデ一覧
+class ListOutfitView(LoginRequiredMixin, ListView):     #コーデ一覧
     template_name = 'hanger/outfit_list.html'
     model = Outfit
 
@@ -71,14 +72,13 @@ class ListOutfitView(ListView):     #コーデ一覧
             query = self.request.GET.get('query')
 
             if query:
-                outfit_list = Outfit.objects.filter(
-                    name__icontains=query)
+                outfit_list = Outfit.objects.filter(name__icontains=query, user=self.request.user)
             else:
-                outfit_list = Outfit.objects.all()
+                outfit_list = Outfit.objects.filter(user=self.request.user)
             return outfit_list
 
 
-class DetailOutfitView(DetailView):    #コーデ詳細
+class DetailOutfitView(LoginRequiredMixin, DetailView):    #コーデ詳細
     templates_name = 'hanger/outfit_detail.html'
     model = Outfit
 
@@ -88,7 +88,7 @@ def index_view(request):    #ログイン/会員登録画面
     return render(request, 'hanger/index.html')
 
 
-class DetailOutfitItemView(DetailView):       #コーデ→アイテム詳細
+class DetailOutfitItemView(LoginRequiredMixin, DetailView):       #コーデ→アイテム詳細
     template_name = 'hanger/item_detail.html'
     model = Item
 
@@ -105,7 +105,7 @@ class DetailOutfitItemView(DetailView):       #コーデ→アイテム詳細
         return context
     
 
-class UpdateOutfitItemView(UpdateView):       #コーデ→アイテム編集
+class UpdateOutfitItemView(LoginRequiredMixin, UpdateView):       #コーデ→アイテム編集
     template_name = 'hanger/item_update.html'
     model = Item
     fields = ('name', 'brand', 'category', 'thumbnail')
@@ -132,7 +132,7 @@ class UpdateOutfitItemView(UpdateView):       #コーデ→アイテム編集
 
     
 
-class DeleteOutfitItemView(DeleteView):       #コーデ→アイテム削除
+class DeleteOutfitItemView(LoginRequiredMixin, DeleteView):       #コーデ→アイテム削除
     template_name = 'hanger/item_delete.html'
     model = Item
     def get_success_url(self):
@@ -155,12 +155,17 @@ class DeleteOutfitItemView(DeleteView):       #コーデ→アイテム削除
         return HttpResponseRedirect(self.get_success_url())
     
 
-class CreateOutfitView(CreateView):    #コーデ登録
+class CreateOutfitView(LoginRequiredMixin, CreateView):    #コーデ登録
     template_name = 'hanger/outfit_create.html'
     model = Outfit
     form_class = OutfitForm
     success_url = reverse_lazy('list-outfit')
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+    
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
         ctx["item"] = Item.objects.all()
@@ -170,10 +175,15 @@ class CreateOutfitView(CreateView):    #コーデ登録
         form.instance.user = self.request.user
         return super().form_valid(form)
     
-class UpdateOutfitView(UpdateView):    #コーデ登録
+class UpdateOutfitView(LoginRequiredMixin, UpdateView):    #コーデ登録
     template_name = 'hanger/outfit_update.html'
     model = Outfit
     form_class = OutfitForm
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
@@ -188,7 +198,7 @@ class UpdateOutfitView(UpdateView):    #コーデ登録
         return reverse('detail-outfit', kwargs={'pk': self.object.pk})
 
 
-class DeleteOutfitView(DeleteView):       #アイテム詳細
+class DeleteOutfitView(LoginRequiredMixin, DeleteView):       #アイテム詳細
     template_name = 'hanger/outfit_delete.html'
     model = Outfit
     success_url = reverse_lazy('list-outfit')

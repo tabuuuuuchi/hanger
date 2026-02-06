@@ -1,0 +1,47 @@
+{% extends 'header_and_back.html' %}
+{% load static %}
+
+{% block title_child %}会員登録{% endblock %}
+
+{% block nav %}
+<div class="empty-box"></div>
+{% endblock %}
+
+
+{% block page-title %}
+<div class="detail-create-title-bar-items">
+    <!--戻るボタン-->
+    <a class="return-search-box" href="{% url 'index' %}">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </a>
+    <h2 class="page-title">会員登録</h2>
+</div>
+{% endblock %}
+
+{% block content_child %}
+<!--ハンガーイラスト-->
+<span class="detail-create-hanger"></span>
+<div class="item-detail-content">
+    <div class="item-detail-items background-grey">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-items">
+                <h3>ユーザーID</h3>
+                <input name="username" class="border-dark background-light">
+            </div>
+            <div class="form-items">
+                <h3>パスワード</h3>
+                <input name="password1" class="border-dark background-light">
+            </div>
+            <div class="form-items">
+                <h3>パスワード確認用</h3>
+                <input name="password2" class="border-dark background-light">
+            </div>
+            {% if form.errors %}
+                <div class="signup-error">利用できないユーザーIDやパスワードの可能性があります。入力内容をご確認ください。</div>
+            {% endif %}
+            <button type="submit" class="form-button background-dark color-light">登録する</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
