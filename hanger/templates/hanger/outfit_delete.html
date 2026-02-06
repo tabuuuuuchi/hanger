@@ -1,0 +1,42 @@
+{% extends 'header_and_back.html' %}
+{% load static %}
+
+{% block title_child %}アイテム削除{% endblock %}
+
+{% block nav %}
+<div class="humburger-box">
+    <span class="humburger-line-top"></span>
+    <span class="humburger-line-middle"></span>
+    <span class="humburger-line-bottom"></span>
+</div>
+{% endblock %}
+
+
+{% block page-title %}
+<div class="detail-create-title-bar-items">
+    <!--戻るボタン-->
+    <a class="return-search-box" href="{% url 'detail-outfit' object.pk %}">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </a>
+    <h2 class="page-title">コーデ削除</h2>
+</div>
+{% endblock %}
+
+{% block content_child %}
+<!--ハンガーイラスト-->
+<span class="detail-create-hanger"></span>
+<div class="item-delete-content">
+    <div class="item-detail-items background-dark">
+        <h4 class="delete-title color-light">"{{ object.name }}"を本当に削除しますか？</h2>
+        <div class="item-detail-button-items">
+            <a class="item-detail-button-box background-dark border-light" href="{% url 'detail-outfit' object.pk %}">
+                <h3 class="item-detail-button-title color-light">いいえ</h2>
+            </a>
+            <form method="post" class="background-red item-detail-button-box border-light">
+                {% csrf_token %}
+                <button type="submit" class="item-detail-button-title color-light">はい</h2>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
