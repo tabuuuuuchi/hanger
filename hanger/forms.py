@@ -9,3 +9,4 @@ class OutfitForm(forms.ModelForm):    #コーデ登録フォーム
             'seasons': forms.CheckboxSelectMultiple(),
             'items': forms.CheckboxSelectMultiple(),
         }
+

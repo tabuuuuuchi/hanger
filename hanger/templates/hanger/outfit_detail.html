@@ -69,12 +69,12 @@
             </div>
         </div>
         <div class="item-detail-button-items">
-            <div class="item-detail-button-box background-light border-dark">
+            <a class="item-detail-button-box background-light border-dark" href="{% url 'update-outfit' object.pk %}">
                 <h3 class="item-detail-button-title color-dark">編集</h2>
-            </div>
-            <div class="item-detail-button-box background-light border-dark">
+            </a>
+            <a class="item-detail-button-box background-light border-dark" href="{% url 'delete-outfit' object.pk %}">
                 <h3 class="item-detail-button-title color-dark">削除</h2>
-            </div>
+            </a>
         </div>
     </div>
 </div>

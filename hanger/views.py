@@ -12,6 +12,16 @@ class ListItemView(ListView):          #アイテム一覧
     template_name = 'hanger/item_list.html'
     model = Item
 
+    def get_queryset(self):
+            query = self.request.GET.get('query')
+
+            if query:
+                item_list = Item.objects.filter(
+                    name__icontains=query)
+            else:
+                item_list = Item.objects.all()
+            return item_list
+    
 
 class DetailItemView(DetailView):       #アイテム詳細
     template_name = 'hanger/item_detail.html'
@@ -56,6 +66,16 @@ class ListOutfitView(ListView):     #コーデ一覧
         ctx = super().get_context_data(**kwargs)
         ctx["season"] = Season.objects.all()
         return ctx
+    
+    def get_queryset(self):
+            query = self.request.GET.get('query')
+
+            if query:
+                outfit_list = Outfit.objects.filter(
+                    name__icontains=query)
+            else:
+                outfit_list = Outfit.objects.all()
+            return outfit_list
 
 
 class DetailOutfitView(DetailView):    #コーデ詳細
@@ -137,7 +157,7 @@ class DeleteOutfitItemView(DeleteView):       #コーデ→アイテム削除
 
 class CreateOutfitView(CreateView):    #コーデ登録
     template_name = 'hanger/outfit_create.html'
-    model = Item
+    model = Outfit
     form_class = OutfitForm
     success_url = reverse_lazy('list-outfit')
 
@@ -149,3 +169,26 @@ class CreateOutfitView(CreateView):    #コーデ登録
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+class UpdateOutfitView(UpdateView):    #コーデ登録
+    template_name = 'hanger/outfit_update.html'
+    model = Outfit
+    form_class = OutfitForm
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx["item"] = Item.objects.all()
+        return ctx
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+    def get_success_url(self):
+        return reverse('detail-outfit', kwargs={'pk': self.object.pk})
+
+
+class DeleteOutfitView(DeleteView):       #アイテム詳細
+    template_name = 'hanger/outfit_delete.html'
+    model = Outfit
+    success_url = reverse_lazy('list-outfit')

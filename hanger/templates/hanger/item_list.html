@@ -13,13 +13,43 @@
 
 
 {% block page-title %}
-<div class="list-title-bar-items">
+{% if request.GET.query %}
+<div class="after-title-bar-items">
+    <!--戻るボタン-->
+    <a class="return-search-box" onclick="history.back()">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </a>
+    <form method="get" class="search-form">
+        <input name="query" value="{{ request.GET.query }}" type="text" />
+        <!--検索ボタン-->
+        <button type="submit" id="search-result" class="return-search-box-after">
+            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+        </button>
+    </form>
+</div>
+{% else %}
+<div id="search-flex" class="before-title-bar-items">
+    <!--戻るボタン-->
+    <div id="return-button" class="return-search-box">
+        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    </div>
+    <form method="get" class="search-form">
+        <input name="query" type="text" />
+        <!--検索ボタン-->
+        <button type="submit" id="search-result" class="return-search-box-after">
+            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+        </button>
+    </form>
+</div>
+<div id=search-hide class="list-title-bar-items">
     <h2 class="page-title">アイテム一覧</h2>
     <!--検索ボタン-->
-    <div class="return-search-box">
+    <div id="search-button" class="return-search-box">
         <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
     </div>
 </div>
+{% endif %}
+
 {% endblock %}
 
 
@@ -29,6 +59,9 @@
     <span class="addition-button-line-vertical background-dark"></span>
     <span class="addition-button-line-horizontal background-dark"></span>
 </a>
+{% if request.GET.query %}
+<h4 class="search-result color-dark">”{{ request.GET.query }}”検索結果</h4>
+{% endif %}
 <div class="list-content">
     <div class="list-category">
         <h3 class="list-title color-dark">トップス</h3>
@@ -129,3 +162,4 @@
 </div>
 
 {% endblock %}
+{% block script_child %}<script src="{% static 'hanger/js/search.js' %}"></script>{% endblock %}

@@ -494,7 +494,7 @@ header {
     position: fixed;
     width: 100vw;
     height: 12px;
-    top: 10%;
+    top: 68px;
     background-color: #303030;
     z-index: 2;
 }
@@ -503,7 +503,7 @@ header {
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0);
-    top: 35%;
+    top: 240px;
     font-family: "Tilt Warp", sans-serif;
     font-size: 60px;
 }
@@ -511,7 +511,7 @@ header {
 .index-content {
     width: 100vw;
     position: fixed;
-    top: 58%;
+    top: 420px;
 }
 
 .index-box {
@@ -733,4 +733,50 @@ footer {
     font-family: "Zen Kaku Gothic New", sans-serif;
     font-weight: 400;
     font-size: 12px;
+}
+
+
+/*js関連
+--------------------------------*/
+.before-title-bar-items {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 18.5%;
+    align-items: center;
+    display: none;
+}
+.after-title-bar-items {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    gap: 18.5%;
+    align-items: center;
+}
+
+.return-search-box-after {
+    width: 26px;
+    height: 26px;
+    border-radius: 0 20% 20% 0;
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+    border-width: 0;
+    padding-left: 2px;
+}
+
+.search-form {
+    display: flex;
+    gap: 5px;
+}
+
+.search-result {
+    position: absolute;
+    top: 100px;
+    right: 5%;
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
 }
