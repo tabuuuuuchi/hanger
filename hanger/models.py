@@ -13,6 +13,7 @@ class Item(models.Model):   #アイテム
         max_length=100,
         choices = CATEGORY
     )
+    user = models.ForeignKey('auth.user', on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name
@@ -30,6 +31,7 @@ class Outfit(models.Model):  #コーデ
     thumbnail = models.ImageField(null=True, blank=True)
     seasons = models.ManyToManyField(Season)
     items = models.ManyToManyField(Item)
+    user = models.ForeignKey('auth.user', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

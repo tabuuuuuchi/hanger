@@ -4,11 +4,32 @@
 {% block title_child %}アイテム詳細{% endblock %}
 
 {% block nav %}
-<div class="humburger-box">
+<div id="humburger-menu-open" class="humburger-box">
     <span class="humburger-line-top"></span>
     <span class="humburger-line-middle"></span>
     <span class="humburger-line-bottom"></span>
 </div>
+<div id="humburger-menu-close" class="humburger-box-open">
+    <span class="humburger-line-top-open"></span>
+    <span class="humburger-line-bottom-open"></span>
+</div>
+{% endblock %}
+
+{% block menu %}
+<dic id="menu" class="menu-content background-grey">
+    <div class="menu-item border-dark">
+        <a href="{% url 'list-item' %}"><h4 class="menu-title color-dark">アイテム一覧</h4></a>
+    </div>
+    <div class="menu-item border-dark">
+        <a href="{% url 'list-outfit' %}"><h4 class="menu-title color-dark">コーデ一覧</h4></a>
+    </div>
+    <div class="menu-item border-dark">
+        <div><h4 class="menu-title color-dark">マイページ</h4></div>
+    </div>
+    <div class="menu-item-bottom border-dark">
+        <a href="{% url 'accounts:logout' %}"><h4 class="menu-title color-dark">ログアウト</h4></a>
+    </div>
+</dic>
 {% endblock %}
 
 
