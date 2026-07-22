@@ -201,6 +201,10 @@ header {
     font-size: 32px;
 }
 
+nav {
+    display: none;
+}
+
 
 /*ページタイトルバー
 -------------------------------------*/
@@ -490,22 +494,22 @@ header {
 }
 
 .outfit-box {
-    width: 100vw;
+    width: 100%;
     display: flex;
 }
 
 .outfit-box-left {
-    width: 3vw;
+    width: 3%;
     border-width: 0 1.5px 1.5px 0;
 }
 
 .outfit-box-right {
-    width: 3vw;
+    width: 3%;
     border-width: 0 0 1.5px 1.5px;
 }
 
 .outfit-box-center {
-    width: 94vw;
+    width: 94%;
 }
 
 .season-title-content {
@@ -594,6 +598,10 @@ header {
     font-family: "Zen Kaku Gothic New", sans-serif;
     font-size: 20px;
     font-weight: 500;
+}
+
+.desktop-index-box {
+    display: none;
 }
 
 
@@ -854,4 +862,87 @@ footer {
     margin: 0 auto;
     text-align: left;
     transform: translate(0, -10px);
+}
+
+
+
+/*PC
+------------------------------------------------------------*/
+
+@media screen and (min-width: 960px) {
+
+    /*ヘッダー
+    ----------------------------------*/
+    .humburger-box {
+        display: none;
+    }
+
+   nav {
+    display: block;
+   }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        list-style: none;
+        font-size: 14px;
+        gap: 30px;
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 500;
+    }
+
+
+
+
+    /*ページタイトルバー
+    ------------------------------------*/
+    .detail-create-title-bar-items {
+        gap: 15px;
+    }
+
+
+
+    /* topページ 
+    ------------------------------------*/
+    .index-content {
+        inset: 0;
+        margin: auto;
+        transform: translate(0, 400px);
+        width: 360px;
+    }
+
+    .desktop-index-box {
+        display: block;
+        position: fixed;
+        inset: 0;
+        margin: 0 auto;
+        width: 480px;
+        height: 420px;
+        border-radius: 30px;
+        transform: translate(0, 177px);
+    }
+
+    .outfit-top-box {
+        height: 10px;
+    }
+
+    .outfit-box-bottom {
+        height: 10px;
+    }
+
+    /* 会員、アイテム、コーデ、登、ログイン録画面
+    ---------------------------------------*/
+
+    .item-detail-content {
+        width: 50%;
+        transform: translate(0, 40px);
+    }
+
+
+    /*追加ボタン
+    ---------------------------------------*/
+    .addition-button {
+        display: none;
+    }
 }

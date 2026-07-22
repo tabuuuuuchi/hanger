@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse ,reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import Item, Season, Outfit
-from .forms import OutfitForm
+from .forms import ItemForm, OutfitForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 
@@ -32,7 +32,7 @@ class DetailItemView(LoginRequiredMixin, DetailView):       #アイテム詳細
 class CreateItemView(LoginRequiredMixin, CreateView):
     template_name = 'hanger/item_create.html'
     model = Item
-    fields = ('name', 'brand', 'category', 'thumbnail')
+    form_class = ItemForm
     success_url = reverse_lazy('list-item')
 
     def form_valid(self, form):
@@ -40,7 +40,7 @@ class CreateItemView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class DeleteItemView(LoginRequiredMixin, DeleteView):       #アイテム詳細
+class DeleteItemView(LoginRequiredMixin, DeleteView):       #アイテム削除
     template_name = 'hanger/item_delete.html'
     model = Item
     success_url = reverse_lazy('list-item')
@@ -49,7 +49,7 @@ class DeleteItemView(LoginRequiredMixin, DeleteView):       #アイテム詳細
 class UpdateItemView(LoginRequiredMixin, UpdateView):
     template_name = 'hanger/item_update.html'
     model = Item
-    fields = ('name', 'brand', 'category', 'thumbnail')
+    form_class = ItemForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user

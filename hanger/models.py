@@ -30,7 +30,7 @@ class Outfit(models.Model):  #コーデ
     name = models.CharField(max_length=100)
     thumbnail = models.ImageField(null=True, blank=True)
     seasons = models.ManyToManyField(Season)
-    items = models.ManyToManyField(Item)
+    items = models.ManyToManyField(Item, null=True, blank=True)
     user = models.ForeignKey('auth.user', on_delete=models.CASCADE)
 
     def __str__(self):

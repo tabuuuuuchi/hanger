@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'hanger.apps.HangerConfig',
+    'django_cleanup'
 ]
 
 MIDDLEWARE = [
