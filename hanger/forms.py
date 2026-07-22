@@ -1,5 +1,24 @@
 from django import forms
-from .models import Item, Outfit, Season
+from .models import Item, Outfit
+from django.core.exceptions import ValidationError
+
+class ItemForm(forms.ModelForm):    #アイテム登録フォーム
+    class Meta:
+        model = Item
+        fields = ['name', 'brand', 'category', 'thumbnail']
+
+    def clean(self):
+         cleaned_data = super().clean()
+         thumbnail = cleaned_data.get('thumbnail')
+
+         if not thumbnail:
+              raise ValidationError({
+                   'thumbnail': '画像ファイルが選択されていません。画像を洗濯してやり直してください。'
+              })
+         
+         return cleaned_data
+    
+
 
 class OutfitForm(forms.ModelForm):    #コーデ登録フォーム
     class Meta:
@@ -16,3 +35,14 @@ class OutfitForm(forms.ModelForm):    #コーデ登録フォーム
             
             if user:
                 self.fields['items'].queryset = Item.objects.filter(user=user)
+
+    def clean(self):
+         cleaned_data = super().clean()
+         thumbnail = cleaned_data.get('thumbnail')
+
+         if not thumbnail:
+              raise ValidationError({
+                   'thumbnail': '画像ファイルが選択されていません。画像を洗濯してやり直してください。'
+              })
+         
+         return cleaned_data

@@ -13,6 +13,14 @@
     <span class="humburger-line-top-open"></span>
     <span class="humburger-line-bottom-open"></span>
 </div>
+<nav>
+    <ul>
+        <li><a href="{% url 'list-item' %}" class="color-light">アイテム一覧</a></li>
+        <li><a href="{% url 'list-outfit' %}" class="color-light">コーデ一覧</a></li>
+        <li><a href="" class="color-light">マイページ</a></li>
+        <li><a href="{% url 'accounts:logout' %}" class="color-light">ログアウト</a></li>
+    </ul>
+</nav>
 {% endblock %}
 
 {% block menu %}
