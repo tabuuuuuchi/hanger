@@ -70,11 +70,17 @@
     </form>
 </div>
 <div id=search-hide class="list-title-bar-items">
-    <h2 class="page-title">アイテム一覧</h2>
-    <!--検索ボタン-->
-    <div id="search-button" class="return-search-box">
-        <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+    <div class="page-title-and-search">
+        <h2 class="page-title">アイテム一覧</h2>
+        <!--検索ボタン-->
+        <div id="search-button" class="return-search-box">
+            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+        </div>
     </div>
+    <!--デスクトップ版追加ボタン-->
+    <a class="addition-button-desktop background-light" href="{% url 'create-item' %}">
+        <p class="color-dark">アイテム追加</p>
+    </a>
 </div>
 {% endif %}
 
@@ -82,7 +88,9 @@
 
 
 {% block content_child %}
+<!--ハンガーイラスト-->
 <span class="list-hanger"></span>
+<!--追加ボタン-->
 <a class="addition-button background-light border-dark" href="{% url 'create-item' %}">
     <span class="addition-button-line-vertical background-dark"></span>
     <span class="addition-button-line-horizontal background-dark"></span>
