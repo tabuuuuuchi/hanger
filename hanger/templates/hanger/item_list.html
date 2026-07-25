@@ -48,7 +48,7 @@
         <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
     </a>
     <form method="get" class="search-form">
-        <input name="query" value="{{ request.GET.query }}" type="text" />
+        <input name="query" value="{{ request.GET.query }}" type="text" class="color-dark">
         <!--検索ボタン-->
         <button type="submit" id="search-result" class="return-search-box-after">
             <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
@@ -57,17 +57,23 @@
 </div>
 {% else %}
 <div id="search-flex" class="before-title-bar-items">
-    <!--戻るボタン-->
-    <div id="return-button" class="return-search-box">
-        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    <div class="search-and-return">
+        <!--戻るボタン-->
+        <div id="return-button" class="return-search-box">
+            <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+        </div>
+        <form method="get" class="search-form">
+            <input name="query" type="text" class="color-dark">
+            <!--検索ボタン-->
+            <button type="submit" id="search-result" class="return-search-box-after">
+                <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+            </button>
+        </form>
     </div>
-    <form method="get" class="search-form">
-        <input name="query" type="text" />
-        <!--検索ボタン-->
-        <button type="submit" id="search-result" class="return-search-box-after">
-            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
-        </button>
-    </form>
+    <!--デスクトップ版追加ボタン-->
+    <a class="addition-button-desktop background-light" href="{% url 'create-item' %}">
+        <p class="color-dark">アイテム追加</p>
+    </a>
 </div>
 <div id=search-hide class="list-title-bar-items">
     <div class="page-title-and-search">
