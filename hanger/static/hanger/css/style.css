@@ -819,10 +819,9 @@ footer {
     width: 90%;
     height: 100%;
     margin: 0 auto;
-    display: flex;
+    display: none;
     gap: 18.5%;
     align-items: center;
-    display: none;
 }
 .after-title-bar-items {
     width: 90%;
@@ -831,6 +830,15 @@ footer {
     display: flex;
     gap: 18.5%;
     align-items: center;
+}
+
+.search-and-return {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    gap: 18.5%;
+    align-items: center;
+    display: none;
 }
 
 .return-search-box-after {
@@ -847,6 +855,10 @@ footer {
 .search-form {
     display: flex;
     gap: 5px;
+    input {
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-size: 14px;
+    }
 }
 
 .search-result {
@@ -929,21 +941,18 @@ footer {
         border-radius: 6px;
     }
 
-    .before-title-bar-items {
-        width: 80%;
-    }
-
+    
     .after-title-bar-items {
         width: 80%;
     }
-
-
+    
+    
     .detail-create-title-bar-items {
         gap: 15px;
         width: 80%;
     }
-
-
+    
+    
     /*ハンガーイラスト
     ------------------------------------*/
     /*一覧用*/
@@ -958,9 +967,9 @@ footer {
         transform: translate(45vw, -40px);
         z-index: -1;
     }
-
-
-
+    
+    
+    
     /* topページ 
     ------------------------------------*/
     .index-content {
@@ -969,7 +978,7 @@ footer {
         transform: translate(0, 400px);
         width: 360px;
     }
-
+    
     .desktop-index-box {
         display: block;
         position: fixed;
@@ -980,34 +989,56 @@ footer {
         border-radius: 30px;
         transform: translate(0, 177px);
     }
-
+    
     .outfit-top-box {
         height: 10px;
     }
-
+    
     .outfit-box-bottom {
         height: 10px;
     }
-
+    
     /* 会員、アイテム、コーデ、登、ログイン録画面
     ---------------------------------------*/
-
+    
     .item-detail-content {
         width: 50%;
         transform: translate(0, 40px);
     }
-
-
+    
+    
     /*追加ボタン
     ---------------------------------------*/
     .addition-button {
         display: none;
     }
-
-
+    
+    
     /*アイテム一覧ページ
     ---------------------------------------*/
     .list-category {
         width: 80%;
+    }
+    
+    
+    /* js関連
+    ---------------------------------------*/
+    .before-title-bar-items {
+        width: 80%;
+        gap: 10%;
+    }
+
+    .after-title-bar-items {
+        gap: 10%;
+    }
+
+    .search-form {
+        input {
+            width: 240px;
+        }
+    }
+
+    .search-result {
+        right: 10%;
     }
 }
