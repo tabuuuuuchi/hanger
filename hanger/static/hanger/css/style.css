@@ -243,7 +243,7 @@ nav {
     align-items: center;
 }
 
-.addition-button-desktop {
+.button-display {
     display: none;
 }
 
@@ -816,7 +816,7 @@ footer {
 /*js関連
 --------------------------------*/
 .before-title-bar-items {
-    width: 90%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     display: none;
@@ -824,7 +824,7 @@ footer {
     align-items: center;
 }
 .after-title-bar-items {
-    width: 90%;
+    width: 100%;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -838,7 +838,7 @@ footer {
     margin: 0 auto;
     gap: 18.5%;
     align-items: center;
-    display: none;
+    display: flex;
 }
 
 .return-search-box-after {
@@ -922,6 +922,7 @@ footer {
     ------------------------------------*/
     .list-title-bar-items {
         width: 80%;
+        gap: 0;
     }
 
     .page-title-and-search {
@@ -929,8 +930,12 @@ footer {
         gap: 40px;
     }
 
+    .button-display {
+        display: block;
+    }
+
     .addition-button-desktop {
-        width: 100px;
+        width: 90px;
         height: 26px;
         display: flex;
         font-family: "Zen Kaku Gothic New", sans-serif;
@@ -1025,11 +1030,17 @@ footer {
     ---------------------------------------*/
     .before-title-bar-items {
         width: 80%;
+        gap: 0;
+    }
+
+    .search-and-return {
+        width: 100%;
         gap: 10%;
     }
 
     .after-title-bar-items {
-        gap: 10%;
+        width: 80%;
+        gap: 0;
     }
 
     .search-form {

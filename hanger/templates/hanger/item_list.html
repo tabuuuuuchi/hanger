@@ -43,17 +43,24 @@
 {% block page-title %}
 {% if request.GET.query %}
 <div class="after-title-bar-items">
-    <!--戻るボタン-->
-    <a class="return-search-box" onclick="history.back()">
-        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
-    </a>
-    <form method="get" class="search-form">
-        <input name="query" value="{{ request.GET.query }}" type="text" class="color-dark">
-        <!--検索ボタン-->
-        <button type="submit" id="search-result" class="return-search-box-after">
-            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
-        </button>
-    </form>
+    <div class="search-and-return">
+        <!--戻るボタン-->
+        <a class="return-search-box" onclick="history.back()">
+            <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+        </a>
+        <form method="get" class="search-form">
+            <input name="query" value="{{ request.GET.query }}" type="text" class="color-dark">
+            <!--検索ボタン-->
+            <button type="submit" id="search-result" class="return-search-box-after">
+                <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+            </button>
+        </form>
+    </div>
+    <div class="button-display">
+        <a class="addition-button-desktop background-light" href="{% url 'create-item' %}">
+            <p class="color-dark">アイテム登録</p>
+        </a>
+    </div>
 </div>
 {% else %}
 <div id="search-flex" class="before-title-bar-items">
@@ -71,9 +78,11 @@
         </form>
     </div>
     <!--デスクトップ版追加ボタン-->
-    <a class="addition-button-desktop background-light" href="{% url 'create-item' %}">
-        <p class="color-dark">アイテム追加</p>
-    </a>
+    <div class="button-display">
+        <a class="addition-button-desktop background-light" href="{% url 'create-item' %}">
+            <p class="color-dark">アイテム登録</p>
+        </a>
+    </div>
 </div>
 <div id=search-hide class="list-title-bar-items">
     <div class="page-title-and-search">
@@ -84,9 +93,11 @@
         </div>
     </div>
     <!--デスクトップ版追加ボタン-->
-    <a class="addition-button-desktop background-light" href="{% url 'create-item' %}">
-        <p class="color-dark">アイテム追加</p>
-    </a>
+    <div class="button-display">
+        <a class="addition-button-desktop background-light" href="{% url 'create-item' %}">
+            <p class="color-dark">アイテム登録</p>
+        </a>
+    </div>
 </div>
 {% endif %}
 
