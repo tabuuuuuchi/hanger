@@ -45,40 +45,64 @@
 {% block page-title %}
 {% if request.GET.query %}
 <div class="after-title-bar-items">
-    <!--戻るボタン-->
-    <a class="return-search-box" onclick="history.back()">
-        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
-    </a>
-    <form method="get" class="search-form">
-        <input name="query" value="{{ request.GET.query }}" type="text" />
-        <!--検索ボタン-->
-        <button type="submit" id="search-result" class="return-search-box-after">
-            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
-        </button>
-    </form>
+    <div class="search-and-return">
+        <!--戻るボタン-->
+        <a class="return-search-box" onclick="history.back()">
+            <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+        </a>
+        <form method="get" class="search-form">
+            <input name="query" value="{{ request.GET.query }}" type="text" class="color-dark">
+            <!--検索ボタン-->
+            <button type="submit" id="search-result" class="return-search-box-after">
+                <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+            </button>
+        </form>
+    </div>
+    <div class="button-display">
+        <a class="addition-button-desktop background-light" href="{% url 'create-outfit' %}">
+            <p class="color-dark">コーデ登録</p>
+        </a>
+    </div>
 </div>
 {% else %}
 <div id="search-flex" class="before-title-bar-items">
-    <!--戻るボタン-->
-    <div id="return-button" class="return-search-box">
-        <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+    <div class="search-and-return">
+        <!--戻るボタン-->
+        <div id="return-button" class="return-search-box">
+            <img class="return-search-img" src="{% static 'hanger/img/icon-park-outline--return.png' %}">
+        </div>
+        <form method="get" class="search-form">
+            <input name="query" type="text" class="color-dark">
+            <!--検索ボタン-->
+            <button type="submit" id="search-result" class="return-search-box-after">
+                <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+            </button>
+        </form>
     </div>
-    <form method="get" class="search-form">
-        <input name="query" type="text" />
-        <!--検索ボタン-->
-        <button type="submit" id="search-result" class="return-search-box-after">
-            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
-        </button>
-    </form>
+    <!--デスクトップ版追加ボタン-->
+    <div class="button-display">
+        <a class="addition-button-desktop background-light" href="{% url 'create-outfit' %}">
+            <p class="color-dark">コーデ登録</p>
+        </a>
+    </div>
 </div>
 <div id=search-hide class="list-title-bar-items">
-    <h2 class="page-title">コーデ一覧</h2>
-    <!--検索ボタン-->
-    <div id="search-button" class="return-search-box">
-        <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+    <div class="page-title-and-search">
+        <h2 class="page-title">コーデ一覧</h2>
+        <!--検索ボタン-->
+        <div id="search-button" class="return-search-box">
+            <img class="return-search-img" src="{% static 'hanger/img/material-symbols--search.png' %}">
+        </div>
+    </div>
+    <!--デスクトップ版追加ボタン-->
+    <div class="button-display">
+        <a class="addition-button-desktop background-light" href="{% url 'create-outfit' %}">
+            <p class="color-dark">コーデ登録</p>
+        </a>
     </div>
 </div>
 {% endif %}
+
 {% endblock %}
 
 
