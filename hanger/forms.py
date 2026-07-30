@@ -13,7 +13,7 @@ class ItemForm(forms.ModelForm):    #アイテム登録フォーム
 
          if not thumbnail:
               raise ValidationError({
-                   'thumbnail': '画像ファイルが選択されていません。画像を洗濯してやり直してください。'
+                   'thumbnail': '画像ファイルが選択されていません。画像を選択してやり直してください。'
               })
          
          return cleaned_data
@@ -42,7 +42,7 @@ class OutfitForm(forms.ModelForm):    #コーデ登録フォーム
 
          if not thumbnail:
               raise ValidationError({
-                   'thumbnail': '画像ファイルが選択されていません。画像を洗濯してやり直してください。'
+                   'thumbnail': '画像ファイルが選択されていません。画像を選択してやり直してください。'
               })
          
          return cleaned_data
