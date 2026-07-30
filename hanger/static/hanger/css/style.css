@@ -383,7 +383,7 @@ nav {
     font-family: "Zen Kaku Gothic New", sans-serif;
     font-weight: 500;
     font-size: 11px;
-    margin: -5px 0 0 4px;
+    margin-top: -5px;
     line-height: 1.2;
 }
 
@@ -391,7 +391,7 @@ nav {
     font-family: "Zen Kaku Gothic New", sans-serif;
     font-weight: 400;
     font-size: 9px;
-    margin: -2px 0 0 4px;
+    margin-top: -2px;
 }
 
 
@@ -1022,7 +1022,28 @@ footer {
     /*アイテム一覧ページ
     ---------------------------------------*/
     .list-category {
+        padding-top: 40px;
         width: 80%;
+    }
+
+    .list-items {
+        padding-top:16px;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4vw;
+    }   
+
+    .item-elements {
+        padding: 10px 0 6px 0;
+    }
+
+    .item-name {
+        font-size: 1.2vw;
+        margin-top: -3px;
+    }
+
+    .item-brand {
+        font-size: 1vw;
+        margin-top: 0;
     }
     
     
