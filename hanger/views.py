@@ -168,14 +168,14 @@ class CreateOutfitView(LoginRequiredMixin, CreateView):    #コーデ登録
     
     def get_context_data(self, **kwargs):
         ctx = super().get_context_data(**kwargs)
-        ctx["item"] = Item.objects.all()
+        ctx["item"] = Item.objects.filter(user=self.request.user)
         return ctx
     
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
     
-class UpdateOutfitView(LoginRequiredMixin, UpdateView):    #コーデ登録
+class UpdateOutfitView(LoginRequiredMixin, UpdateView):    #コーデ編集
     template_name = 'hanger/outfit_update.html'
     model = Outfit
     form_class = OutfitForm

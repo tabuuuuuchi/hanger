@@ -1003,11 +1003,11 @@ footer {
         height: 10px;
     }
     
-    /* 会員、アイテム、コーデ、登、ログイン録画面
+    /* 会員、アイテム、コーデ、登録、ログイン画面
     ---------------------------------------*/
     
     .item-detail-content {
-        width: 50%;
+        width: 540px;
         transform: translate(0, 40px);
     }
     
@@ -1044,6 +1044,12 @@ footer {
     .item-brand {
         font-size: 1vw;
         margin-top: 0;
+    }
+
+    /*アイテム削除画面
+    ---------------------------------------*/
+    .item-delete-content {
+        width: 540px;
     }
     
     
