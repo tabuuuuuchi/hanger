@@ -115,14 +115,16 @@
                     {% for checkbox in form.items %}
                         {% for im in item %}
                             {% if checkbox.choice_label == im.name %}
-                                {% if im.category == 'トップス' %}
-                                    <div class="checkbox-items">
-                                        {{ checkbox.tag }}
-                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
-                                            {{ checkbox.choice_label }}
-                                        </label>
-                                    </div>
-                                {% endif %}
+                                {% ifchanged %}
+                                    {% if im.category == 'トップス' %}
+                                        <div class="checkbox-items">
+                                            {{ checkbox.tag }}
+                                            <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                                {{ checkbox.choice_label }}
+                                            </label>
+                                        </div>
+                                    {% endif %}
+                                {% endifchanged %}
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
@@ -132,14 +134,16 @@
                     {% for checkbox in form.items %}
                         {% for im in item %}
                             {% if checkbox.choice_label == im.name %}
-                                {% if im.category == 'パンツ' %}
-                                    <div class="checkbox-items">
-                                        {{ checkbox.tag }}
-                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
-                                            {{ checkbox.choice_label }}
-                                        </label>
-                                    </div>
-                                {% endif %}
+                                {% ifchanged %}
+                                    {% if im.category == 'パンツ' %}
+                                        <div class="checkbox-items">
+                                            {{ checkbox.tag }}
+                                            <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                                {{ checkbox.choice_label }}
+                                            </label>
+                                        </div>
+                                    {% endif %}
+                                {% endifchanged %}
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
@@ -148,16 +152,18 @@
                 <div class="checkbox-item-content">
                     {% for checkbox in form.items %}
                         {% for im in item %}
-                            {% if checkbox.choice_label == im.name %}
-                                {% if im.category == 'アウター' %}
-                                    <div class="checkbox-items">
-                                        {{ checkbox.tag }}
-                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
-                                            {{ checkbox.choice_label }}
-                                        </label>
-                                    </div>
+                            {% ifchanged %}
+                                {% if checkbox.choice_label == im.name %}
+                                    {% if im.category == 'アウター' %}
+                                        <div class="checkbox-items">
+                                            {{ checkbox.tag }}
+                                            <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                                {{ checkbox.choice_label }}
+                                            </label>
+                                        </div>
+                                    {% endif %}
                                 {% endif %}
-                            {% endif %}
+                            {% endifchanged %}
                         {% endfor %}
                     {% endfor %}
                 </div>
@@ -166,14 +172,16 @@
                     {% for checkbox in form.items %}
                         {% for im in item %}
                             {% if checkbox.choice_label == im.name %}
-                                {% if im.category == 'シューズ' %}
-                                    <div class="checkbox-items">
-                                        {{ checkbox.tag }}
-                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
-                                            {{ checkbox.choice_label }}
-                                        </label>
-                                    </div>
-                                {% endif %}
+                                {% ifchanged %}
+                                    {% if im.category == 'シューズ' %}
+                                        <div class="checkbox-items">
+                                            {{ checkbox.tag }}
+                                            <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                                {{ checkbox.choice_label }}
+                                            </label>
+                                        </div>
+                                    {% endif %}
+                                {% endifchanged %}
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
@@ -183,14 +191,16 @@
                     {% for checkbox in form.items %}
                         {% for im in item %}
                             {% if checkbox.choice_label == im.name %}
-                                {% if im.category == 'アクセサリー' %}
-                                    <div class="checkbox-items">
-                                        {{ checkbox.tag }}
-                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
-                                            {{ checkbox.choice_label }}
-                                        </label>
-                                    </div>
-                                {% endif %}
+                                {% ifchanged %}
+                                    {% if im.category == 'アクセサリー' %}
+                                        <div class="checkbox-items">
+                                            {{ checkbox.tag }}
+                                            <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                                {{ checkbox.choice_label }}
+                                            </label>
+                                        </div>
+                                    {% endif %}
+                                {% endifchanged %}
                             {% endif %}
                         {% endfor %}
                     {% endfor %}
@@ -198,18 +208,14 @@
                 <h4>その他</h4>
                 <div class="checkbox-item-content">
                     {% for checkbox in form.items %}
-                        {% for im in item %}
-                            {% if checkbox.choice_label == im.name %}
-                                {% if im.category == 'その他' %}
-                                    <div class="checkbox-items">
-                                        {{ checkbox.tag }}
-                                        <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
-                                            {{ checkbox.choice_label }}
-                                        </label>
-                                    </div>
-                                {% endif %}
-                            {% endif %}
-                        {% endfor %}
+                        {% if checkbox.instance.category == 'その他' %}
+                            <div class="checkbox-items">
+                                {{ checkbox.tag }}
+                                <label for="{{ checkbox.id_for_label }}" class="checkbox-item-name color-dark">
+                                    {{ checkbox.choice_label }}
+                                </label>
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
