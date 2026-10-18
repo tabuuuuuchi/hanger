@@ -618,6 +618,12 @@ nav {
 
 /*コーデ詳細ページ
 ----------------------------------*/
+.outfit-detail-content {
+    margin: 0 auto;
+    width: 90%;
+    padding-top: 160px
+}
+
 .outfit-detail-items {
     width: 100%;
     padding: 12px 0 12px 0;
@@ -628,6 +634,23 @@ nav {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+}
+
+.outfit-detail-upper {
+    border-width: 0;
+}
+
+.outfit-img-box {
+    width: 72%;
+    margin: 0 auto;
+}
+
+.outfit-detail-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-width: 0.5px;
+    border-radius: 12px 12px 0 0;
 }
 
 .outfit-item-content {
@@ -647,16 +670,34 @@ nav {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
+}
 
-    .item-img{
-        width: 90%;
-    }
+.outfit-detail-item-box {
+    width: 100%;
+    aspect-ratio: 13/17;
+    text-decoration: none;
+}
 
-    .item-name {
-        margin-top: -2px;
-        text-align: left;
-        font-size: 9px;
-    }
+.outfit-detail-item-elements {
+    width: 80%;
+    margin: 0 auto;
+    padding: 6px 0 3px 0;
+}
+
+.outfit-detail-item-img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-width: 0.5px;
+}
+
+.outfit-detail-item-name {
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    text-align: left;
+    margin-top: -5px;
+    line-height: 1.2;
 }
 
 .outfit-season-items {
@@ -682,6 +723,35 @@ nav {
     text-align: center;
     font-family: "Noto Sans", sans-serif;
     font-weight: 700;
+}
+
+.outfit-detail-button-items {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.outfit-detail-button-box {
+    width: 22%;
+    height: 30px;
+    border-width: 1px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+        background-color: rgba(0, 0, 0, 0);
+        border-style: none;
+    }
+}
+
+.outfit-detail-button-title {
+    font-family: "Zen Kaku Gothic New", sans-serif;
+    font-weight: 400;
+    padding: 0 8px 0 8px;
+    font-size: 16px;
 }
 
 
@@ -1004,7 +1074,7 @@ footer {
     }
     
 
-    /* 会員、アイテム、コーデ、登録、ログイン画面
+    /* 会員・アイテム・コーデ・登録、アイテム・コーデ詳細、 ログイン画面
     ---------------------------------------*/
     
     .item-detail-content {
@@ -1061,15 +1131,44 @@ footer {
     }
 
 
+    /*コーデ詳細ページ
+    ----------------------------------*/
+    .outfit-detail-content {
+        width: 80%;
+    }
+
+    .outfit-detail-items {
+        padding: 12px 0 0 0;
+    }
+
+    .outfit-detail-upper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        padding-bottom: 30px;
+        border-width: 0 0 1px 0;
+    }
+
+    .outfit-detail-upper-half {
+        width: 40%;
+    }
+
+    .outfit-detail-button-items {
+        margin: 20px 0 20px 0;
+    }
+
+    .outfit-detail-button-box {
+        width: 120px;
+    }
+
+
+
     /*アイテム削除画面
     ---------------------------------------*/
     .item-delete-content {
         width: 540px;
     }
-
-
-    /*コーデ一覧ページ
-    ---------------------------------------*/
     
     
     /* js関連
