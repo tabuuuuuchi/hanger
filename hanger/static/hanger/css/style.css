@@ -1003,6 +1003,7 @@ footer {
         height: 10px;
     }
     
+
     /* 会員、アイテム、コーデ、登録、ログイン画面
     ---------------------------------------*/
     
@@ -1019,7 +1020,7 @@ footer {
     }
     
     
-    /*アイテム一覧ページ
+    /*アイテム、コーデ一覧ページ
     ---------------------------------------*/
     .list-category {
         padding-top: 40px;
@@ -1031,26 +1032,44 @@ footer {
         grid-template-columns: repeat(5, 1fr);
         gap: 4vw;
     }   
-
+    
     .item-elements {
         padding: 10px 0 6px 0;
     }
-
+    
     .item-name {
         font-size: 1.2vw;
         margin-top: -3px;
     }
-
+    
     .item-brand {
         font-size: 1vw;
         margin-top: 0;
     }
+    
+    
+    /*コーデ一覧ページ
+    ---------------------------------------*/
+    .outfit-list-items {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4vw;
+    }  
+
+    .outfit-list-content {
+        width: 80vw;
+        margin: 0 auto;
+    }
+
 
     /*アイテム削除画面
     ---------------------------------------*/
     .item-delete-content {
         width: 540px;
     }
+
+
+    /*コーデ一覧ページ
+    ---------------------------------------*/
     
     
     /* js関連
