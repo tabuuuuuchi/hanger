@@ -108,9 +108,9 @@
 
 {% block content_child %}
 <span class="list-hanger"></span>
-<a class="addition-button background-dark border-light" href="{% url 'create-outfit' %}">
-    <span class="addition-button-line-vertical background-light"></span>
-    <span class="addition-button-line-horizontal background-light"></span>
+<a class="addition-button background-light border-dark" href="{% url 'create-outfit' %}">
+    <span class="addition-button-line-vertical background-dark"></span>
+    <span class="addition-button-line-horizontal background-dark"></span>
 </a>
 {% if request.GET.query %}
 <h4 class="search-result color-dark">”{{ request.GET.query }}”検索結果</h4>

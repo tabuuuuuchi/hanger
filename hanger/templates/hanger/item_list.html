@@ -108,9 +108,9 @@
 <!--ハンガーイラスト-->
 <span class="list-hanger"></span>
 <!--追加ボタン-->
-<a class="addition-button background-light border-dark" href="{% url 'create-item' %}">
-    <span class="addition-button-line-vertical background-dark"></span>
-    <span class="addition-button-line-horizontal background-dark"></span>
+<a class="addition-button background-dark border-light" href="{% url 'create-item' %}">
+    <span class="addition-button-line-vertical background-light"></span>
+    <span class="addition-button-line-horizontal background-light"></span>
 </a>
 {% if request.GET.query %}
 <h4 class="search-result color-dark">”{{ request.GET.query }}”検索結果</h4>
