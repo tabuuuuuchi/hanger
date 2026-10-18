@@ -98,6 +98,7 @@ header {
     width: 100vw;
     height: 48px;
     background-color: #303030;
+    border-width: 0 0 0.5px 0;
 }
 
 .header-items {
@@ -215,6 +216,7 @@ nav {
     transform: translate(0, 64px);
     background-color: #303030;
     z-index: 2;
+    border-width: 0.5px 0 0.5px 0;
 }
 
 .page-title {
@@ -568,6 +570,7 @@ nav {
     top: 68px;
     background-color: #303030;
     z-index: 2;
+    border-width: 0.5px 0 0.5px 0;
 }
 
 .index-title {
