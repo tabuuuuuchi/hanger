@@ -446,9 +446,9 @@ nav {
 }
 
 .item-detail-category-box {
-    background-color: #f3f3f3;
     height: 18px;
     border-radius: 10px;
+    border-width: 1px;
     width: fit-content;
     display: flex;
     align-items: center;
@@ -456,7 +456,6 @@ nav {
 }
 
 .item-detail-category {
-    color: #303030;
     font-size: 13px;
     font-weight: 500;
     padding: 0 10px 2px 10px;
@@ -473,7 +472,6 @@ nav {
 .item-detail-button-box {
     width: 22%;
     height: 30px;
-    border-width: 1px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -736,7 +734,6 @@ nav {
 .outfit-detail-button-box {
     width: 22%;
     height: 30px;
-    border-width: 1px;
     border-radius: 10px;
     display: flex;
     justify-content: center;
