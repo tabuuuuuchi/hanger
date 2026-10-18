@@ -4,7 +4,7 @@
 
 {% block content %}
     <header>
-        <div class="header-content">
+        <div class="header-content border-light">
             <div class="header-items">
                 <h1 class="header-title">hanger</h1>
                 {% block nav %}{% endblock %}   <!-- 空白orハンバーガーメニュー -->
@@ -13,7 +13,7 @@
         {% block menu %}{% endblock %}
     </header>
     <main>
-        <div class="title-bar">
+        <div class="title-bar border-light">
             {% block page-title %}{% endblock %}   <!-- タイトルとボタン -->
         </div>
         {% block content_child %}{% endblock %}
